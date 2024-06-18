@@ -252,18 +252,11 @@ jobs:
         git_sparse_clone master "https://github.com/x-wrt/com.x-wrt" "x-wrt" luci-app-macvlan luci-app-xwan
         ) &
 
-        for ipk in $(ls -d luciapp/!(luci-app-rclone|luci-app-filebrowser)/); do
-        	if [[ $(ls $ipk/po | wc -l) -gt 3 ]]; then
-            rm -rf $ipk
-        	fi
-        done
-
         git_sparse_clone master "https://github.com/coolsnowwolf/lede" "leanlede" package/lean package/qca/shortcut-fe package/network/services/shellsync
 
     - name: Delete duplicated packages
       run: |
         shopt -s extglob
-        mv -n luciapp/!(luci-app-noddos|luci-app-cshark|luci-app-dnscrypt-proxy|luci-app-https-dns-proxy|luci-app-ssr-mudb-server|luci-app-ledtrig-*) ./ ; rm -Rf luciapp
         mv -n lean/* ./ ; rm -Rf lean
         mv -n liep/* ./ ; rm -Rf liep
         mv -n openwrt-app-actions/applications/* ./;rm -rf openwrt-app-actions
