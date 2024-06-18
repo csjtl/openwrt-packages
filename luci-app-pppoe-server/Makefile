@@ -1,4 +1,4 @@
-# Copyright (C) 2018-2020 Lienol <lawlienol@gmail.com>
+# Copyright (C) 2018-2021 Lienol <lawlienol@gmail.com>
 #
 # This is free software, licensed under the Apache License, Version 2.0 .
 #

@@ -6,11 +6,9 @@
 
 include $(TOPDIR)/rules.mk
 
-LUCI_TITLE:=LuCI support for guest-wifi
+LUCI_TITLE:=luci-app-guest-wifi
 LUCI_DEPENDS:=
 LUCI_PKGARCH:=all
-
-PKG_NAME:=luci-app-guest-wifi
 
 include $(TOPDIR)/feeds/luci/luci.mk
 
