@@ -8,12 +8,12 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=trojan-plus
 PKG_VERSION:=10.0.3
-PKG_RELEASE:=11
+PKG_RELEASE:=12
 
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_URL:=https://github.com/peter-tank/trojan-plus.git
 PKG_SOURCE_DATE:=2020-09-06
-PKG_SOURCE_VERSION:=null
+PKG_SOURCE_VERSION:=
 PKG_MIRROR_HASH:=skip
 
 PKG_BUILD_PARALLEL:=1

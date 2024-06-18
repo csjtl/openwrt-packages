@@ -18,21 +18,6 @@ var callSystemInfo = rpc.declare({
 	method: 'info'
 });
 
-var callCPUBench = rpc.declare({
-	object: 'luci',
-	method: 'getCPUBench'
-});
-
-var callCPUInfo = rpc.declare({
-	object: 'luci',
-	method: 'getCPUInfo'
-});
-
-var callTempInfo = rpc.declare({
-	object: 'luci',
-	method: 'getTempInfo'
-});
-
 return baseclass.extend({
 	title: _('System'),
 
@@ -40,9 +25,6 @@ return baseclass.extend({
 		return Promise.all([
 			L.resolveDefault(callSystemBoard(), {}),
 			L.resolveDefault(callSystemInfo(), {}),
-			L.resolveDefault(callCPUBench(), {}),
-			L.resolveDefault(callCPUInfo(), {}),
-			L.resolveDefault(callTempInfo(), {}),
 			L.resolveDefault(callLuciVersion(), { revision: _('unknown version'), branch: 'LuCI' })
 		]);
 	},
@@ -50,10 +32,7 @@ return baseclass.extend({
 	render: function(data) {
 		var boardinfo   = data[0],
 		    systeminfo  = data[1],
-		    cpubench    = data[2],
-		    cpuinfo     = data[3],
-		    tempinfo    = data[4],
-		    luciversion = data[5];
+		    luciversion = data[2];
 
 		luciversion = luciversion.branch + ' ' + luciversion.revision;
 
@@ -74,6 +53,8 @@ return baseclass.extend({
 
 		var fields = [
 			_('Hostname'),         boardinfo.hostname,
+			_('Model'),            boardinfo.model,
+			_('Architecture'),     boardinfo.system,
 			_('Target Platform'),  (L.isObject(boardinfo.release) ? boardinfo.release.target : ''),
 			_('Firmware Version'), (L.isObject(boardinfo.release) ? boardinfo.release.description + ' / ' : '') + (luciversion || ''),
 			_('Kernel Version'),   boardinfo.kernel,
@@ -85,24 +66,6 @@ return baseclass.extend({
 				systeminfo.load[2] / 65535.0
 			) : null
 		];
-
-		if (tempinfo.tempinfo) {
-			fields.splice(6, 0, _('Temperature'));
-			fields.splice(7, 0, tempinfo.tempinfo);
-		}
-		if (boardinfo.model == "Default string Default string") {
-			if (cpuinfo.cpuinfo) {
-			fields.splice(2, 0, _('Architecture'));
-			fields.splice(3, 0, cpuinfo.cpuinfo + cpubench.cpubench);
-			}
-		} else {
-			fields.splice(2, 0, _('Model'));
-			fields.splice(3, 0, boardinfo.model + cpubench.cpubench);
-			if (cpuinfo.cpuinfo) {
-			fields.splice(4, 0, _('Architecture'));
-			fields.splice(5, 0, cpuinfo.cpuinfo);
-			}
-		}
 
 		var table = E('table', { 'class': 'table' });
 

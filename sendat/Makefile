@@ -1,12 +1,12 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=sendat
-PKG_RELEASE:=2
+PKG_RELEASE:=3
 
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_URL:=https://github.com/ouyangzq/sendat.git
 PKG_SOURCE_DATE:=2023-10-26
-PKG_SOURCE_VERSION:=null
+PKG_SOURCE_VERSION:=
 PKG_MIRROR_HASH:=skip
 
 include $(INCLUDE_DIR)/package.mk

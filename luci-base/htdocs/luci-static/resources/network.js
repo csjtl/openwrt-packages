@@ -4383,10 +4383,4 @@ WifiNetwork = baseclass.extend(/** @lends LuCI.network.WifiNetwork.prototype */ 
 	}
 });
 
-setTimeout(function(){
-try{
-  document.getElementsByClassName('cbi-button-apply')[0].children[3].children[0].value='1'
-}catch(err) {
-}},1000)
-
 return Network;

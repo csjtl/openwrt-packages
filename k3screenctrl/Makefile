@@ -2,11 +2,11 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=k3screenctrl
 PKG_VERSION:=0.10
-PKG_RELEASE:=20
+PKG_RELEASE:=21
 
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_URL:=https://github.com/updateing/k3screenctrl.git
-PKG_SOURCE_VERSION:=null
+PKG_SOURCE_VERSION:=
 PKG_SOURCE_SUBDIR:=$(PKG_NAME)-$(PKG_SOURCE_VERSION)
 PKG_SOURCE:=$(PKG_SOURCE_SUBDIR).tar.xz
 PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_SOURCE_SUBDIR)
@@ -19,7 +19,7 @@ TARGET_CFLAGS+= -D_GNU_SOURCE
 define Package/k3screenctrl
   SECTION:=utils
   CATEGORY:=Utilities
-  DEPENDS:=@(TARGET_bcm53xx_generic_DEVICE_phicomm_k3||TARGET_DEVICE_bcm53xx_generic_DEVICE_phicomm_k3) +@KERNEL_DEVMEM
+  DEPENDS:=@TARGET_bcm53xx_generic_DEVICE_phicomm_k3 +@KERNEL_DEVMEM
   TITLE:=LCD screen controller on PHICOMM K3
   URL:=https://github.com/updateing/k3-screen-ctrl
 endef
