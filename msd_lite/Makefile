@@ -5,11 +5,11 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=msd_lite
-PKG_RELEASE:=23
+PKG_RELEASE:=24
 
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_URL:=https://github.com/rozhuk-im/msd_lite.git
-PKG_SOURCE_DATE:=2024-03-16
+PKG_SOURCE_DATE:=2024-04-29
 PKG_SOURCE_VERSION:=
 PKG_MIRROR_HASH:=skip
 
